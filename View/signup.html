@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Dashboard | Sign Up</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="./css/style.min.css">
+
+  <!-- Ajax Duplicate check -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div class="layer"></div>
+<main class="page-center">
+  <article class="sign-up">
+    <h1 class="sign-up__title">Get started</h1>
+    <p class="sign-up__subtitle">Start creating the best possible user experience for you customers</p>
+    <form class="sign-up-form form" onsubmit="return false">
+      <label class="form-label-wrapper">
+        <p class="form-label">Name</p>
+        <input class="form-input" type="text" id="name" name="name" placeholder="Enter your name" required>
+      </label>
+      <!-- <label class="form-label-wrapper">
+        <p class="form-label">Team</p>
+        <input class="form-input" type="email" name="team"  placeholder="Enter your team" required>
+      </label> -->
+      <label class="form-label-wrapper">
+        <p id="username-error" class="form-label">Email</p>
+        <input class="form-input" type="email" id="email" name="email" placeholder="Enter your email" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Password</p>
+        <input class="form-input" type="password" id="password" name="password" placeholder="Enter your password" required>
+      </label>
+      <label class="form-checkbox-wrapper">
+        <!-- <input class="form-checkbox" name="check" type="checkbox">
+        <span class="form-checkbox-label">Remember me next time</span> -->
+      </label>
+      <button class="form-btn primary-default-btn transparent-btn" onclick="Regist()">Sign up</button>
+    </form>
+  </article>
+</main>
+<!-- Chart library -->
+<script src="./plugins/chart.min.js"></script>
+<!-- Icons library -->
+<script src="plugins/feather.min.js"></script>
+<!-- Custom scripts -->
+<script src="js/script.js"></script>
+</body>
+<script>
+  // 회원 가입
+  function Regist() {
+    const apiUrl = 'http://10.200.50.82:8080/api/regist';
+
+    // POST 요청에 사용할 데이터
+    const postData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+    };
+
+    // fetch 함수를 사용하여 POST 요청 axios로 수정 예정
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': '"application/json"'
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => {
+        // 응답이 성공적인지 확인
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        // JSON 데이터를 사용하여 원하는 동작 수행
+        // console.log('API Response:', data.token);
+          // 토큰을 쿠키로 설정 (1분 동안 유효)
+          // setCookie('LoginToken', data.token, 1);
+
+          // 로그인 성공 후 원하는 페이지로 리다이렉트
+        window.location.href = 'http://10.200.50.82';
+        
+    })
+    .catch(error => {
+        // 오류 처리
+        console.error('There was a problem with the fetch operation:', error);
+        alert('Error: ' + error.message);
+    });
+  }
+</script>
+</html>
+
+<script>
+  $(document).ready(function() {
+      // 아이디 입력란에서 포커스가 벗어나면 중복 체크 요청
+      $("#email").blur(function() {
+          var username = $(this).val();
+          $.ajax({
+              type: "POST",
+              url: "../check_username.php",
+              data: { email: username },
+              error : function(){
+                  alert('통신실패');
+              },
+              success: function(response) {
+                  if (response === "available") {
+                      $("#username-error").text("Email 사용 가능");
+                  } else if (response === "taken") {
+                      $("#username-error").text("Email 증복");
+                  }
+              }
+          });
+      });
+
+      // 폼 제출 시 아이디 중복 체크를 한 번 더 수행하고, 중복이 아닌 경우에만 서버로 제출
+      // $("#sign-up-form form").submit(function(event) {
+      //     var username = $("#email").val();
+      //     $.ajax({
+      //         type: "POST",
+      //         url: "../check_username.php",
+      //         data: { email: username },
+      //         success: function(response) {
+      //             if (response === "available") {
+      //                 // 중복이 아닌 경우 서버로 제출
+      //                 return true;
+      //             } else if (response === "taken") {
+      //                 // 중복일 경우 제출 중지
+      //                 $("#username-error").text("Email 중복");
+      //                 event.preventDefault();
+      //                 location.replace('/signup.html');
+      //             }
+      //         }
+      //     });
+      //     return false;
+      // });
+  });
+</script>
+

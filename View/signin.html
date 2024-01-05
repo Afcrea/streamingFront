@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Dashboard | Sign In</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="./css/style.min.css">
+
+</head>
+
+<body>
+  <div class="layer"></div>
+<main class="page-center">
+  <article class="sign-up">
+    <h1 class="sign-up__title">Welcome back!</h1>
+    <p class="sign-up__subtitle">Sign in to your account to continue</p>
+    <form class="sign-up-form form" onsubmit="return false">
+      <!-- action="http://10.200.50.82:8080/api/authLogin" method="post"> -->
+      <label class="form-label-wrapper">
+        <p class="form-label">Email</p>
+        <input class="form-input" id= "email" type="test" name="email" placeholder="Enter your email" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Password</p>
+        <input class="form-input" id= "password" type="password" name="password" placeholder="Enter your password" required>
+      </label>
+      <a class="link-info forget-link" href="##">Forgot your password?</a>
+      <label class="form-checkbox-wrapper">
+        <!-- <input class="form-checkbox" type="checkbox" name="check">
+        <span class="form-checkbox-label">Remember me next time</span> -->
+      </label>
+      <button class="form-btn primary-default-btn transparent-btn" onclick="login()">Sign in</button><br>
+      <!-- <button class="form-btn primary-default-btn transparent-btn">Sign in</button><br> -->
+      <button type="button" class="form-btn primary-default-btn transparent-btn" onclick="location.href='signup.html'">Join</button>
+    </form>
+    <button onclick="Login()">Send POST Request</button>
+  </article>
+</main>
+<script>
+  function login() {
+    const apiUrl = 'http://10.200.50.82:8080/api/login';
+
+    // POST 요청에 사용할 데이터
+    const postData = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+    };
+    // const postData = new URLSearchParams();
+    // postData.append('email', document.getElementById('email').value);
+    // postData.append('password', document.getElementById('password').value);
+
+    // fetch 함수를 사용하여 POST 요청 axios로 수정 예정
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': '"application/json"'
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => {
+        // 응답이 성공적인지 확인
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // JSON 형태로 파싱된 응답을 반환
+        // const data = response.json();
+
+        return response.json();
+    })
+    .then(data => {
+        // JSON 데이터를 사용하여 원하는 동작 수행
+        // console.log('API Response:', data.token);
+        if (data.token) {
+          // 토큰을 쿠키로 설정 (1분 동안 유효)
+          setCookie('LoginToken', data.token, 1000);
+
+          // 로그인 성공 후 원하는 페이지로 리다이렉트
+          window.location.href = 'http://10.200.50.82';
+        }
+    })
+    .catch(error => {
+        // 오류 처리
+        console.error('There was a problem with the fetch operation:', error);
+        alert('Error: ' + error.message);
+    });
+  }
+
+  function setCookie(name, value, minutes) {
+    var expires = "";
+    if (minutes) {
+        var date = new Date();
+        date.setTime(date.getTime() + (minutes * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  function getCookie(name) {
+    const cookieString = document.cookie;
+    const cookies = cookieString.split('; ');
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].split('=');
+        const cookieName = cookie[0];
+        const cookieValue = cookie[1];
+
+        if (cookieName === name) {
+            return cookieValue;
+        }
+    }
+
+    return null;
+}
+
+</script>
+
+<!-- Chart library -->
+<script src="./plugins/chart.min.js"></script>
+<!-- Icons library -->
+<script src="plugins/feather.min.js"></script>
+<!-- Custom scripts -->
+<script src="js/script.js"></script>
+</body>
+
+</html>

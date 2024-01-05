@@ -1,0 +1,79 @@
+/* 부모 컨테이너 스타일 */
+.parent {
+    display: flex;
+    align-items: flex-start; /* 영상을 왼쪽에 배치 */
+    justify-content: space-between; /* 영상과 채팅 창을 최대한 분리 */
+    text-align: center;
+    height: 100;
+    padding-left: 20px;
+}
+
+/* 비디오 스타일 */
+#video {
+    width: 70%; /* 영상 너비를 */
+    max-width: 100%;
+}
+
+#output {
+    overflow: scroll;
+    height: 700px;
+}
+
+/* 채팅 창 스타일 */
+#chat {
+    flex: 1; /* 남은 공간을 채팅 창이 차지하도록 설정 */
+    height: auto;
+    margin: 0px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 140px;
+    box-sizing: border-box;
+}
+
+#messageInput {
+    width: 90%;
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#sendButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.quality-selector {
+    display: inline-block;
+    margin: 10px;
+}
+
+.quality-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.quality-option {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.quality-option:hover {
+    background-color: #f0f0f0;
+}
+
+.selected {
+    background-color: #4caf50;
+    color: #fff;
+}

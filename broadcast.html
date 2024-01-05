@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 영상 송출</title>
+    <link rel="stylesheet" href="broadcast_styles.css">
+</head>
+
+<body>
+    <div id="offButton">
+
+    </div>
+    <div class="parent">
+        <video id="video" poster="./stream/Img/img.png" height="1024" width="1280" controls loop playsinline autoplay muted></video>
+        <div id="chat">
+            <div id="chatingname"><h1></div>
+            <p></p>
+            <div id="output"></div>
+            
+            <input type="text" id="messageInput" placeholder="메시지 입력">
+            <button id="sendButton">전송</button>
+            
+            <button id="outChat">나가기</button>
+            <button id="test">테스트</button>
+            <button id="bandwidth">대역폭</button>
+        </div>
+    </div>
+
+    <div class="quality-selector">
+        <span class="quality-label">화질:</span>
+        <div class="quality-option" onclick="changeQuality('360p')">360p</div>
+        <div class="quality-option" onclick="changeQuality('480p')">480p</div>
+        <div class="quality-option" onclick="changeQuality('720p')">720p</div>
+        <div class="quality-option" onclick="changeQuality('1080p')">1080p</div>
+        <div class="quality-option selected" onclick="changeQuality('자동')">자동</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="APIwithToken.js"></script>
+    <script src="broadcast_header.js"></script>
+    <script src="broadcast_chating.js"></script>
+    <!-- <script>var videoSrc = <?php //echo json_encode($videoSrc); ?></script> -->
+
+</body>
+</html>
