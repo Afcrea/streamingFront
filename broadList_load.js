@@ -99,9 +99,9 @@
 // }
 
 let row;
-
+const apiServer = `http://10.200.50.82:8080`;
 (async function getStream() {
-    const apiUrl = 'http://10.200.50.82:8080/api/getStream';
+    const apiUrl = apiServer + '/api/getStream';
 
     const headers = {
         'Content-Type': 'application/json',

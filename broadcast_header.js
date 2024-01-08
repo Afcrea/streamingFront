@@ -13,7 +13,7 @@ let userEmail = '익명';
 let videoSrc; 
 let quality = '';
 let streamKey;
-
+const apiServer = `http://10.200.50.82:8080`;
 
 
 
@@ -90,7 +90,7 @@ async function getChannel() {
 // 접속유저 정보 받아오기
 async function getUser() {
     if (isLogin()) {
-        const apiUrl = 'http://10.200.50.82:8080/api/getUser';
+        const apiUrl = apiServer + '/api/getUser';
 
         const headers = {
             'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ async function getUser() {
 
 // 현재 채널의 방송 정보 조회
 async function getHost(channel) {
-    const apiUrl = 'http://10.200.50.82:8080/api/getHost/' + channel;
+    const apiUrl = apiServer + '/api/getHost/' + channel;
 
     // const postData = {
     //     'user_id' : channel,
@@ -212,7 +212,7 @@ function calBandwidth() {
 
 // 방송 종료 버튼 API
 function offBroadcast(){
-    const apiUrl = 'http://10.200.50.82:8080/api/endStream';
+    const apiUrl = apiServer + '/api/endStream';
 
     const headers = {
         'Content-Type': 'application/json',

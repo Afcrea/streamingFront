@@ -1,5 +1,5 @@
 function logout() {
-    const apiUrl = 'http://10.200.50.82:8080/api/authLogout';
+    const apiUrl = apiServer + '/api/authLogout';
 
     const headers = {
         'Content-Type': 'application/json',
