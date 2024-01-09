@@ -99,7 +99,7 @@
 // }
 
 let row;
-const apiServer = `http://10.200.50.82:8080`;
+const apiServer = `http://43.202.255.204`;
 (async function getStream() {
     const apiUrl = apiServer + '/api/getStream';
 

@@ -26,7 +26,7 @@ function logout() {
     .then(data => {
         // 로그아웃 요청 성공 후 토큰 삭제 후 메인페이지로 이동
         deleteCookie('LoginToken');
-        window.location.href = 'http://10.200.50.82';
+        window.location.href = 'http://' + apiServer;
     })
     .catch(error => {
         // 오류 처리
