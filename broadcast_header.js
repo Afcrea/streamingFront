@@ -13,7 +13,8 @@ let userEmail = '익명';
 let videoSrc; 
 let quality = '';
 let streamKey;
-const apiServer = `http://43.202.255.204`;
+const apiServer = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com/api/Laravel`;
+const Server = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com`;
 
 
 
@@ -90,7 +91,7 @@ async function getChannel() {
 // 접속유저 정보 받아오기
 async function getUser() {
     if (isLogin()) {
-        const apiUrl = apiServer + '/api/getUser';
+        const apiUrl = apiServer + '/getUser';
 
         const headers = {
             'Content-Type': 'application/json',
@@ -142,7 +143,7 @@ async function getUser() {
 
 // 현재 채널의 방송 정보 조회
 async function getHost(channel) {
-    const apiUrl = apiServer + '/api/getHost/' + channel;
+    const apiUrl = apiServer + '/getHost/' + channel;
 
     // const postData = {
     //     'user_id' : channel,
@@ -212,7 +213,7 @@ function calBandwidth() {
 
 // 방송 종료 버튼 API
 function offBroadcast(){
-    const apiUrl = apiServer + '/api/endStream';
+    const apiUrl = apiServer + '/endStream';
 
     const headers = {
         'Content-Type': 'application/json',

@@ -99,9 +99,10 @@
 // }
 
 let row;
-const apiServer = `http://43.202.255.204`;
+const apiServer = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com/api/Laravel`;
+const Server = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com`;
 (async function getStream() {
-    const apiUrl = apiServer + '/api/getStream';
+    const apiUrl = apiServer + '/getStream';
 
     const headers = {
         'Content-Type': 'application/json',
