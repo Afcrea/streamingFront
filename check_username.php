@@ -3,10 +3,10 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 // 데이터베이스 연결 설정
-$host = "localhost";
-$user = "root";
-$password = "qwe123";
-$database = "php";
+$host = "";
+$user = "";
+$password = "";
+$database = "";
 
 $conn = new mysqli($host, $user, $password, $database);
 
