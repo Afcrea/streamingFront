@@ -56,7 +56,7 @@ function copyToClipboard() {
 }
 
 function startStream() {
-    const apiUrl = 'http://10.200.50.82:8080/api/startStream';
+    const apiUrl = `http://${apiServer}/api/startStream`;
     console.log(document.getElementById('broadcastTitle').value);
     console.log(document.getElementById('broadcastDescription').value);
     console.log(document.getElementById('category').value);
@@ -91,7 +91,7 @@ function startStream() {
     .then(data => {
         // 비동기 작업이 완료된 후에 리다이렉션 수행
         setTimeout(() => {
-            window.location.href = 'http://10.200.50.82';
+            window.location.href = `http://${apiServer}`;
         }, 1000); // 1초 지연
         return true;
     })
@@ -101,7 +101,7 @@ function startStream() {
 }
 
 function getStreamkey() {
-    const apiUrl = 'http://10.200.50.82:8080/api/getStreamkey';
+    const apiUrl = `http://${apiServer}/api/getStreamkey`;
 
     const headers = {
         'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ function getStreamkey() {
     .catch(error => {
 
         if(Error('로그인 좀요')){
-            window.location.href = 'http://10.200.50.82/View/signin.html';
+            window.location.href = `http://${apiServer}/View/signin.html`;
         }
     });
 }

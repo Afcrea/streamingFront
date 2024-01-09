@@ -55,8 +55,9 @@
 </body>
 <script>
   // 회원 가입
+  const apiServer = `http://43.202.255.204`;
   function Regist() {
-    const apiUrl = 'http://10.200.50.82:8080/api/regist';
+    const apiUrl = `http://${apiServer}/api/regist`;
 
     // POST 요청에 사용할 데이터
     const postData = {
@@ -88,7 +89,7 @@
           // setCookie('LoginToken', data.token, 1);
 
           // 로그인 성공 후 원하는 페이지로 리다이렉트
-        window.location.href = 'http://10.200.50.82';
+        window.location.href = `http://${apiServer}`;
         
     })
     .catch(error => {

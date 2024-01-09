@@ -13,7 +13,7 @@ let userEmail = '익명';
 let videoSrc; 
 let quality = '';
 let streamKey;
-const apiServer = `http://10.200.50.82:8080`;
+const apiServer = `http://43.202.255.204`;
 
 
 
@@ -238,7 +238,7 @@ function offBroadcast(){
     })
     .then(data => {
         // 방송 종료 요청 성공 후 메인페이지로 이동
-        window.location.href = 'http://10.200.50.82';
+        window.location.href = `http://${apiServer}`;
     })
     .catch(error => {
         // 오류 처리

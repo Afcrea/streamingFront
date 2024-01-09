@@ -42,8 +42,9 @@
   </article>
 </main>
 <script>
+  const apiServer = `http://43.202.255.204`;
   function login() {
-    const apiUrl = 'http://10.200.50.82:8080/api/login';
+    const apiUrl = `http://${apiServer}/api/login`;
 
     // POST 요청에 사용할 데이터
     const postData = {
