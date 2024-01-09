@@ -57,9 +57,9 @@ function copyToClipboard() {
 
 function startStream() {
     const apiUrl = `${apiServer}/startStream`;
-    console.log(document.getElementById('broadcastTitle').value);
-    console.log(document.getElementById('broadcastDescription').value);
-    console.log(document.getElementById('category').value);
+//    console.log(document.getElementById('broadcastTitle').value);
+//    console.log(document.getElementById('broadcastDescription').value);
+ //   console.log(document.getElementById('category').value);
     const headers = {
         'Content-Type': 'application/json',
     };

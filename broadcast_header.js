@@ -239,7 +239,7 @@ function offBroadcast(){
     })
     .then(data => {
         // 방송 종료 요청 성공 후 메인페이지로 이동
-        window.location.href = `http://${apiServer}`;
+        window.location.href = `http://${Server}`;
     })
     .catch(error => {
         // 오류 처리
