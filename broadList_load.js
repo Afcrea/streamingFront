@@ -99,8 +99,8 @@
 // }
 
 let row;
-const apiServer = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com/api/Laravel`;
-const Server = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com`;
+const apiServer = `www.broat.shop/api/Laravel`;
+const Server = `www.broat.shop`;
 (async function getStream() {
     const apiUrl = apiServer + '/getStream';
 
