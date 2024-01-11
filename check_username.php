@@ -3,12 +3,14 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 // 데이터베이스 연결 설정
-$host = "";
-$user = "";
-$password = "";
-$database = "";
+#$host = "";
+#$user = "";
+#$password = "";
+#$database = "";
+#
+#$conn = new mysqli($host, $user, $password, $database);
 
-$conn = new mysqli($host, $user, $password, $database);
+include 'check_username_db.php';
 
 // 아이디 중복 체크
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["email"])) {
