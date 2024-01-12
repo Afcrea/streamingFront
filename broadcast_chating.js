@@ -1,5 +1,5 @@
 // WebSocket 서버 주소
-const serverUrl = 'ws://10.200.50.82:8020';
+const serverUrl = 'wss://www.broat.shop/chat';
 // const serverUrl = 'ws://10.200.50.83:8010';
 
 // 소켓 연결 후 핑 메시지 전송

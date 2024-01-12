@@ -13,8 +13,8 @@ let userEmail = '익명';
 let videoSrc; 
 let quality = '';
 let streamKey;
-const apiServer = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com/api/Laravel`;
-const Server = `http://ec2-43-202-255-204.ap-northeast-2.compute.amazonaws.com`;
+const apiServer = `https://www.broat.shop/api/Laravel`;
+const Server = `https://www.broat.shop`;
 
 
 
@@ -67,7 +67,7 @@ async function getVideoSrc() {
 
     if(Host.Host != null) {
         streamKey = Host.Host.stream_key;
-        return "http://10.200.50.82:8088/hls/" + streamKey + quality + ".m3u8";
+        return Server + "/stream/hls/" + streamKey + quality + ".m3u8";
     }
     else {
         streamKey = undefined;
@@ -239,7 +239,7 @@ function offBroadcast(){
     })
     .then(data => {
         // 방송 종료 요청 성공 후 메인페이지로 이동
-        window.location.href = `http://${Server}`;
+        window.location.href = `${Server}`;
     })
     .catch(error => {
         // 오류 처리
