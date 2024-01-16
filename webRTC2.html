@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Screen Sharing Example</title>
+</head>
+<body>
+    <h1>WebRTC Screen Sharing Example</h1>
+
+    <!-- 로컬 비디오 또는 화면 공유 피드 -->
+    <video id="localVideo" autoplay muted></video>
+
+    <!-- 원격 비디오 피드 -->
+    <video id="remoteVideo" autoplay></video>
+
+    <!-- 시작 버튼 -->
+    <button id="startButton">Start Screen Share</button>
+
+    <!-- 종료 버튼 -->
+    <button id="hangupButton" disabled>Hang Up</button>
+
+    <script src="webRTC2.js"></script>
+</body>
+</html>
+
