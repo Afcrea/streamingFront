@@ -99,8 +99,9 @@
 // }
 
 let row;
-const apiServer = `https://www.broat.shop/api/Laravel`;
-const Server = `https://www.broat.shop`;
+// const apiServer = `https://www.broat.shop/api/Laravel`;
+// const Server = `https://www.broat.shop`;
+
 (async function getStream() {
     const apiUrl = apiServer + '/getStream';
 
