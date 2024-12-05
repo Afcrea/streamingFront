@@ -67,11 +67,12 @@ async function getVideoSrc() {
 
     if(Host.Host != null) {
         streamKey = Host.Host.stream_key;
-        return Server + "/stream/hls/" + streamKey + quality + ".m3u8";
+        console.log(streamKey);
+        return StreamServer + "/hls/" + streamKey + quality + ".m3u8";
     }
     else {
         streamKey = "111";
-        return "http://211.188.55.250:8080/stream/uploaded/ts/111.m3u8"
+        return Server + "/stream/uploaded/ts/111.m3u8"
     }
 
     // return "http://10.200.50.82:8088/hls_quality/" + Host.Host.stream_key + ".m3u8";
