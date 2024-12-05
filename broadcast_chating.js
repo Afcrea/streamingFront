@@ -75,7 +75,7 @@ async function send(message) {
     if (socket && socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify(data));
         if(data.text != "ping") {
-            output.innerHTML += `<p><strong>${data.sender} : </strong> ${data.text}</p>`;
+            output.innerHTML += `<p><strong>${data.sender}(Me) : </strong> ${data.text}</p>`;
         }
     }
     else {
