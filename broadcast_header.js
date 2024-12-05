@@ -70,7 +70,8 @@ async function getVideoSrc() {
         return Server + "/stream/hls/" + streamKey + quality + ".m3u8";
     }
     else {
-        streamKey = undefined;
+        streamKey = "111";
+        return "http://211.188.55.250:8080/stream/uploaded/ts/111.m3u8"
     }
 
     // return "http://10.200.50.82:8088/hls_quality/" + Host.Host.stream_key + ".m3u8";
@@ -168,7 +169,6 @@ async function getHost(channel) {
             return response.json();
         })
         .then(data => {
-            
             return resolve(data);
         })
         .catch(error => {
