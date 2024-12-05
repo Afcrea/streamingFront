@@ -13,8 +13,8 @@ let userEmail = '익명';
 let videoSrc; 
 let quality = '';
 let streamKey;
-const apiServer = `https://www.broat.shop/api/Laravel`;
-const Server = `https://www.broat.shop`;
+// const apiServer = `https://www.broat.shop/api/Laravel`;
+// const Server = `https://www.broat.shop`;
 
 
 
