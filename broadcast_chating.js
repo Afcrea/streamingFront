@@ -20,11 +20,23 @@ async function SocketConnection() {
 
     // 메시지를 수신했을 때 실행되는 이벤트 핸들러
     NewSocket.addEventListener('message', (event) => {
-        output.innerHTML += '<p>' + event.data + '</p>';
-        let chatDiv = document.getElementById('output');
-        chatDiv.scrollTo({
-            top: chatDiv.scrollHeight
-        });
+        // 데이터를 JSON으로 파싱
+        try {
+            const data = JSON.parse(event.data); // JSON 문자열을 객체로 변환
+            const sender = data.sender || 'Unknown'; // sender 값
+            const text = data.text || ''; // text 값
+
+            // sender와 text를 화면에 출력
+            output.innerHTML += `<p><strong>${sender}:</strong> ${text}</p>`;
+
+            // 스크롤 자동 이동
+            let chatDiv = document.getElementById('output');
+            chatDiv.scrollTo({
+                top: chatDiv.scrollHeight
+            });
+        } catch (error) {
+            console.error('Invalid JSON:', event.data);
+        }
     });
 
     // 연결이 닫혔을 때 실행되는 이벤트 핸들러
@@ -58,6 +70,9 @@ async function send(message) {
 
     if (socket && socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify(data));
+        if(data.text != "ping") {
+            output.innerHTML += `<p><strong>${data.sender} : </strong> ${data.text}</p>`;
+        }
     }
     else {
         console.error('Socket is not in the "OPEN" state. Attempting to create a new socket connection...');
