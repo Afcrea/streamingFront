@@ -22,6 +22,10 @@ async function SocketConnection() {
     NewSocket.addEventListener('message', (event) => {
         // 데이터를 JSON으로 파싱
         try {
+            // 데이터에서 JSON 부분만 추출
+            const rawData = event.data.trim();
+            const jsonData = rawData.substring(rawData.indexOf('{')); // JSON 시작 부분부터 추출
+
             const data = JSON.parse(event.data); // JSON 문자열을 객체로 변환
             const sender = data.sender || 'Unknown'; // sender 값
             const text = data.text || ''; // text 값
