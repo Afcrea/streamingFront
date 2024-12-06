@@ -13,8 +13,11 @@
         <div class="header-left">
             <button id="broadcastStart">방송 시작</button>
             <button id="broadcastHow" onclick="window.open('howtostream.html', '_blank')">방송 가이드</button>
+            
         </div>
-        <div class="header-right" id="userStatus"></div>
+        <div class="header-right" id="userStatus">
+            <button id="Login" onclick="window.open('./View/signin.html')">로그인</button>
+        </div>
     </header>
 
     <main>
@@ -64,6 +67,18 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // 로그인 여부에 따라 로그인 / 로그아웃 버튼
+        (() => {
+            if(isLogin()) {
+                document.getElementById('userStatus').innerHTML = `<button id="broadcastLogout" onclick="logout()">로그아웃</button>`;
+            }
+            else {
+                document.getElementById('userStatus').innerHTML = `<button id="broadcastHow" onclick="location.href='View/signin.html'">로그인</button>`;
+            }
+        })();
+    </script>
 
     <script src="APIwithToken.js"></script>
     <script src="ServerUrl.js"></script>
