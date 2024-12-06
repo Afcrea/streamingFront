@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,43 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="broadList_styles.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-FZJaqyVVskqtHh0JZAdz9UvIqEPfhcmOzVPEbERSCvBbcql+KwD3PHWFF/dqX9u8XihD11RKr0vaN0e5r0Jsrg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-    
     <title>방송 시작</title>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
-        <h1><button id="broadcastStart">방송 시작</button></h1>
-        <h1><button id="broadcastHow" onclick="window.open('howtostream.html', '_blank')">방송 가이드</button></h1>
-        <h1 id="userStatus"></h1>
-    </header>
-    <hr>
-    <h2>방송목록</h2>
-    <div class="broadcastList">
-        <!-- <?php //echo $broadcastsList; ?> -->
-    </div>
-
-    <hr>
-    <h2>VOD</h2>
-    <div class="broadcastList">
-        <div>
-            <img src="./stream/Img/img.png" onclick="location.href='vod.html?streamKey=123&channel=99'">
-            <p >무한도전</p>
-            <p ></p>
-            <p ></p>
+        <div class="header-left">
+            <button id="broadcastStart">방송 시작</button>
+            <button id="broadcastHow" onclick="window.open('howtostream.html', '_blank')">방송 가이드</button>
         </div>
-    </div>
-    
+        <div class="header-right" id="userStatus"></div>
+    </header>
+
+    <main>
+        <!-- Broadcast List Section -->
+        <section class="section-container">
+            <h2>방송 목록</h2>
+            <div class="broadcastList">
+                <!-- Broadcast list dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- VOD Section -->
+        <section class="section-container">
+            <h2>VOD</h2>
+            <div class="broadcastList">
+                <div>
+                    <img src="./stream/Img/img.png" onclick="location.href='vod.html?streamKey=123&channel=99'" alt="VOD Thumbnail">
+                    <p class="vod-title">무한도전</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Section -->
     <div id="overlay"></div>
     <div id="modal">
         <form onsubmit="return false">
             <div id="streamKeyContainer">
-                <label for="streamKey">스트림 키:
+                <label for="streamKey">스트림 키:</label>
                 <input type="password" id="streamKey" readonly name="stream_key">
-                <!-- 눈 모양 아이콘 추가 -->
                 <i id="toggleStreamKey" class="toggle-password fas fa-eye-slash" onclick="toggleStreamKeyVisibility()"></i>
                 <i class="fas fa-copy" onclick="copyToClipboard()"></i>
-                </label>
             </div>
             <label for="broadcastTitle">방송 제목:</label>
             <input type="text" id="title" name="title">
@@ -54,27 +58,14 @@
                 <option value="category2">카테고리 2</option>
                 <option value="category3">카테고리 3</option>
             </select>
-            <button id="startButton" onclick="startStream()">시작</button>
-            <button class="cancel" id="cancelButton">취소</button>
+            <div class="modal-buttons">
+                <button id="startButton" onclick="startStream()">시작</button>
+                <button class="cancel" id="cancelButton">취소</button>
+            </div>
         </form>
     </div>
-    
-    <script src="APIwithToken.js">// isLogin() 함수</script>
 
-    
-    <script>
-        // 로그인 여부에 따라 로그인 / 로그아웃 버튼
-        (() => {
-            if(isLogin()) {
-                document.getElementById('userStatus').innerHTML = `<button id="broadcastLogout" onclick="logout()">로그아웃</button>`;
-            }
-            else {
-                document.getElementById('userStatus').innerHTML = `<button id="broadcastHow" onclick="location.href='View/signin.html'">로그인</button>`;
-            }
-        })();
-    </script>
-
-    <!-- <script>const stream_key = <?php //echo json_encode($streamKey); ?>;</script> -->
+    <script src="APIwithToken.js"></script>
     <script src="ServerUrl.js"></script>
     <script src="./broadList_load.js" defer></script>
     <script src="./broadList_modal.js" defer></script>
