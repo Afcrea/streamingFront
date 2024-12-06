@@ -4,7 +4,6 @@ let row;
 
 (async function getStream() {
     const apiUrl = apiServer + '/getStream';
-    console.log(apiUrl);
     const headers = {
         'Content-Type': 'application/json',
     };
