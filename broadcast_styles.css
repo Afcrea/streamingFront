@@ -15,6 +15,22 @@ header {
     font-size: 24px;
 }
 
+header button {
+    background-color: white;
+    color: #4caf50;
+    border: 1px solid #4caf50;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+header button:hover {
+    background-color: #45a049;
+    color: white;
+}
+
 /* Video and Chat Section */
 .parent {
     display: flex;
